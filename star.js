@@ -1,8 +1,10 @@
 class Star {
-  constructor(centerX, centerY, numPoints, size, color){
+  constructor(centerX, centerY, numPoints, startSize, endSize, color){
     this.centerX = centerX;
     this.centerY = centerY;
-    this.size = size;
+    this.startSize = startSize
+    this.endSize = endSize;
+    this.size = startSize;
     this.color = color;
     this.numPoints = numPoints;
     
@@ -29,11 +31,7 @@ class Star {
   }
   
   display(){
-    // stroke(255);
     strokeWeight(0);
-    // strokeWeight(0.25);
-    // stroke(208, 137, 230);
-    // stroke(...this.color);
     fill(...this.color, 125);
     circle(this.centerX, this.centerY, this.size);
     stroke(255);
@@ -48,8 +46,8 @@ class Star {
     if (this.grow) {
       this.size += 0.1
     }
-    if (this.size >= 25){
-      this.size = 25
+    if (this.size >= this.endSize){
+      this.size = this.endSize
       this.grow = false
       this.pulse = true
     }
