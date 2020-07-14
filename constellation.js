@@ -60,7 +60,7 @@ class Constellation {
   translate() {
     const [centerX, centerY] = this.getCenter();
     const diffX = width / 2 - centerX;
-    const diffY = height / 2 - centerY;
+    const diffY = (height + height / 10) / 2 - centerY;
     for (let c = 0; c < this.coords.length; c++) {
       this.coords[c][0] += diffX;
       this.coords[c][1] += diffY;
@@ -119,7 +119,7 @@ class Constellation {
         coordIndex += 2;
       }
     }
-    return Math.floor(2 * min_dist / 3)
+    return min(Math.floor(2 * min_dist / 3), min(height, width) / 10)
   }
 
   scaleFactor() {
